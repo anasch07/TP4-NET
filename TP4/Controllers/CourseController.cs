@@ -20,12 +20,8 @@ namespace TP4.Controllers
             UniversityContext universityContext = UniversityContext.Instantiate_UniversityContext();
             StudentRepository studentRepository = new StudentRepository(universityContext);
             IEnumerable<Student> res = (IEnumerable<Student>)studentRepository.Find(v => v.course.ToLower() == id.ToLower());
-            //foreach (Student s in res)
-            //{
-            //    Debug.WriteLine(s.id);
-            //} 
-
-            if (res.Count() != 0) ViewBag.Id = res.First().course;
+            
+            if(res.Count() != 0) ViewBag.Id = res.First().course;
             return View(res);
         }
     }
